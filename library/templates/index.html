@@ -1,0 +1,115 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+<html lang="ru"> <!-- Язык сайта - русский -->
+  <head>    
+    <meta charset="utf-8"> <!-- Кодировка сайта -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Загружаем фав-иконки -->
+    <link rel="icon" href="img/fav/fav.ico" type="image">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Подключен файл со стандартными стилями бустрап -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Shantell+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Популярные книги</title>
+  </head>
+  <body>
+    <header>
+      <!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
+      <!-- В дальнейшем тут будет создано полноценное меню -->
+      <nav class="navbar navbar-light" style="background-color: blue">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
+            <span style="color:white">Libra</span>.com
+          </a>
+          <ul class="nav nav-pills">            <li class="nav-item">              
+            <a class="nav-link {% if view_name  == 'about:author' %}active{% endif %}" 
+              href="author.html">Об авторе</a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link link-light" href="login.html">Войти</a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link link-light" href="signup.html">Регистрация</a>
+            </li>          </ul>
+        </div>
+      </nav>    
+        
+    </header>
+    <main> 
+      <!-- класс py-5 создает отступы сверху и снизу блока -->
+      <div class="container py-5">     
+        <h1>Популярные книги</h1>
+        <article>
+          <img src="img/book1.jpg" width="200" height="200" class="d-inline-block align-right" alt=""> 
+          <ul>
+            <li>
+              Название: Война и мир
+            </li>
+            <li>
+              Автор: Лев Толстой
+            </li>
+            <li>
+              Дата публикации: 30 июля 1854
+            </li>
+          </ul>   
+          <p>
+            Роман-эпопея Льва Николаевича Толстого, описывающий русское общество в эпоху войн против Наполеона в 1805-1812 годах. 
+            Эпилог романа доводит повествование до 1820 года. 
+          </p>
+          
+        </article>
+        <hr>
+        <article>
+          <img src="img/book2.jpg" width="200" height="200" class="d-inline-block align-right" alt="">
+          <ul>
+            <li>
+              Название: 1984
+            </li>
+            <li>
+              Автор: Джордж Оруэлл
+            </li>
+            <li>
+              Дата публикации: 29 июля 1965
+            </li>
+          </ul> 
+          <p>
+            Роман-антиутопия Джорджа Оруэлла, изданный в 1949 году. Как отмечает членкор РАН М. Ф. 
+            Черныш, это самое главное и последнее произведение писателя. 
+          </p>
+          
+          <article>
+            <img src="img/book3.jpg" width="200" height="200" class="d-inline-block align-right" alt=""> 
+            <ul>
+              <li>
+                Название: Мартин Иден
+              </li>
+              <li>
+                Автор: Джек Лондон
+              </li>
+              <li>
+                Дата публикации: 28 июля 1854
+              </li>
+            </ul> 
+            <p>
+              Роман Джека Лондона. Впервые был напечатан в журнале 
+              «The Pacific Monthly» в 1908-1909 годах и уже в 1909 году вышел отдельной книгой в издательстве «Макмиллан компани». 
+            </p>
+          </article>
+        <!-- под последним постом нет линии -->
+      </div>  
+    </main>
+    <!-- Использованы классы бустрапа: -->
+    <!-- border-top: создаёт тонкую линию сверху блока -->
+    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
+    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
+    <footer class="border-top text-center py-3">
+      <!-- тег span используется для добавления нужных стилей отдельным участкам текста --> 
+      <p>© 2023 Copyright <span style="color:red">Libra</span>.com</p>    
+    </footer>
+  </body>
+</html>
