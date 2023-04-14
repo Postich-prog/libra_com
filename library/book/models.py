@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Genre(models.Model):
@@ -7,7 +10,7 @@ class Genre(models.Model):
         verbose_name='Название',
         unique=True
     )
-    slug = models.SlugField('Слаг', unique=True, default="slug")
+    slug = models.SlugField('Слаг', unique=True)
 
     class Meta:
         verbose_name = 'Жанр'
@@ -38,3 +41,28 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    book = models.ForeignKey(
+        Book,
+        on_delete=models.CASCADE,
+        related_name='comments',
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Автор комментария',
+    )
+    text = models.TextField(
+        verbose_name='Текст комментария',
+        help_text='Добавьте Ваш комментарий'
+    )
+    pub_date = models.DateTimeField(
+        verbose_name='Дата публикации',
+        auto_now_add=True
+    )
+
+    class Meta:
+        ordering = ['-pub_date']
