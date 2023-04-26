@@ -1,3 +1,4 @@
 Django==2.2.19
 pytz==2022.6
 sqlparse==0.4.3
+sorl-thumbnail==12.9.0

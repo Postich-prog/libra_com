@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework.authtoken',
+    'users',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -35,8 +37,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'library.urls'
-
-STATIC_URL = '/static/'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
@@ -110,3 +110,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+POST_COUNT: int = 10

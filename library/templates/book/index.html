@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load cache %}
+{% load static %}
+{% block content %}
+{% block title %}
+  {{title}}
+{% endblock %}
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+{% for book in page_obj %}
+
+  <div class="col">
+    <div style="height: 700px;" class="card shadow-sm">
+      {% thumbnail book.image "600x600" crop="center" upscale=True as im %}
+        <img class="card-img my-2" src="{{ im.url }}">
+      {% endthumbnail %}
+      <div class="card-body">
+        <ul>
+          <li>
+            Название:
+            {{ book.title }}
+          </li>
+          <li>
+            Автор: 
+            <a>{{ book.author }} </a>
+          </li>
+          <li>
+            Жанры: 
+            <a>{{ book.genres }} </a>
+          </li>
+        </ul>   
+        <p>
+          {{ book.description }} 
+        </p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group align-items-end">
+            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+          </div>
+          <small class="text-muted">9 mins</small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+      </div>
+    </div>
+{% endblock %}

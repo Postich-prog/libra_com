@@ -33,6 +33,14 @@ class Book(models.Model):
         Genre,
         verbose_name='Жанр'
     )
+    # Поле для картинки (необязательное)
+    image = models.ImageField(
+        'Картинка',
+        upload_to='books/',
+        blank=True
+    )
+    # Аргумент upload_to указывает директорию,
+    # в которую будут загружаться пользовательские файлы.
 
     class Meta:
         verbose_name = 'Книга'
@@ -40,7 +48,7 @@ class Book(models.Model):
         ordering = ('title',)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Comment(models.Model):

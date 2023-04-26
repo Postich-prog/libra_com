@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api-token-auth/', views.obtain_auth_token),
     path('', include('book.urls')),
+    path('about/', include('about.urls', namespace='about')),
 ]
