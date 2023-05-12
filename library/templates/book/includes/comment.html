@@ -4,13 +4,41 @@
   <div class="card my-4">
     <h5 class="card-header">Добавить комментарий:</h5>
     <div class="card-body">
-      <form method="post" action="{% url 'book:add_comment' books.id %}">
+      <form id="contactForm" method="post">
         {% csrf_token %}      
         <div class="form-group mb-2">
           {{ form.text|addclass:"form-control" }}
         </div>
         <button id="id_button_save" type="submit" class="btn btn-primary">Отправить</button>
       </form>
+      
+      {% block javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          // отслеживаем событие отправки формы
+          $('#contactForm').submit(function () {
+              // создаем AJAX-вызов
+              $.ajax({
+                  data: $(this).serialize(), // получаем данные формы
+                  type: $(this).attr('method'), // GET или POST
+                  url: "{% url 'book:add_comment' books.id %}",
+                  // если успешно, то
+                  success:function(){
+                    alert('Комментарий сохранен');
+                      },
+                  // если ошибка, то
+                  error: function (response) {
+                      // предупредим об ошибке
+                      alert(response.responseJSON.errors);
+                      console.log(response.responseJSON.errors)
+                  }
+              });
+              return false;
+          });
+      })
+  </script>
+{% endblock javascript %}
 
     </div>
   </div>

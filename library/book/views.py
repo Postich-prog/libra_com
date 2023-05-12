@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import CommentForm
 from .models import Book
+from django.http import JsonResponse
 
 
 def index(request):
@@ -45,11 +46,13 @@ def post_detail(request, book_id):
 def add_comment(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     form = CommentForm(request.POST or None)
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.author = request.user
-        comment.book = book
-        comment.save()
+    if request.is_ajax():
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.book = book
+            comment.save()
+            return JsonResponse({"book": comment.book.pk}, status=200)
     return redirect('book:book_detail', book_id=book_id)
 
 
