@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 
 User = get_user_model()
 
@@ -8,7 +8,7 @@ class Genre(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name='Название',
-        unique=True
+        unique=True,
     )
     slug = models.SlugField('Слаг', unique=True)
 
@@ -31,7 +31,8 @@ class Book(models.Model):
     author = models.TextField('Автор')
     genres = models.ManyToManyField(
         Genre,
-        verbose_name='Жанр'
+        verbose_name='Жанр',
+        related_name='genres',
     )
     # Поле для картинки (необязательное)
     image = models.ImageField(
@@ -41,6 +42,13 @@ class Book(models.Model):
     )
     # Аргумент upload_to указывает директорию,
     # в которую будут загружаться пользовательские файлы.
+
+    users = models.ManyToManyField(
+        User,
+        related_name='favorite_books',
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'Книга'

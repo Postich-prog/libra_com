@@ -6,10 +6,12 @@
 {% block title %}
   {{title}}
 {% endblock %}
+
 <div class="album py-5 bg-black">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 {% for book in page_obj %}
+
   <div class="col">
     <div style="height: 700px;" class="card shadow-sm">
       <a class="navbar-brand" href="{% url 'book:book_detail' book.pk %}">
@@ -29,7 +31,7 @@
           </li>
           <li>
             Жанры: 
-            <a>{{ book.genres.name }} </a>
+            <a>{{ book.genres }} </a>
           </li>
         </ul>   
         <p>
@@ -37,24 +39,18 @@
         </p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group align-items-end">
-            {% if book in favorite_post_list %}
             <a class="btn btn-sm btn-outline-warning" href="{% url 'book:delete_from_favorite' book.pk %}" role="button">
               В избранное
             </a>
-            {% else %}
-            <a class="btn btn-sm btn-outline-secondary" href="{% url 'book:add_to_favorite' book.pk %}" role="button">
-              В избранное
-            </a>
-            {% endif %}
             <button type="button" class="btn btn-sm btn-outline-secondary">Оценить</button>
-            
           </div>
           <small class="text-muted">9 mins</small>
         </div>
 
-      </div>
+      </div> 
     </div>
   </div>
+
 {% endfor %}
 </div>
       </div>

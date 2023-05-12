@@ -1,8 +1,10 @@
-from book.models import Book, Genre, Comment
-from rest_framework import permissions, viewsets
-from .serializers import (BookReadSerializer, GenreSerializer,
-                          CommentSerializer, BookWriteSerializer)
 from django.shortcuts import get_object_or_404
+from rest_framework import permissions, viewsets
+
+from book.models import Book, Comment, Genre
+
+from .serializers import (BookReadSerializer, BookWriteSerializer,
+                          CommentSerializer, GenreSerializer)
 
 
 class GenreViewSet(viewsets.ModelViewSet):

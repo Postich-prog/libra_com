@@ -8,4 +8,8 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('', include('book.urls')),
     path('about/', include('about.urls', namespace='about')),
+    path('auth/', include('users.urls')),
+    # Если какой-то URL не обнаружится в приложении users —
+    # Django пойдёт искать его в django.contrib.auth
+    path('auth/', include('django.contrib.auth.urls')),
 ]

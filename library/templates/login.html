@@ -13,30 +13,6 @@
     <title>Войти</title>
   </head>
   <body>
-    <header>
-      <!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
-      <!-- В дальнейшем тут будет создано полноценное меню -->
-      <nav class="navbar navbar-light" style="background-color: blue">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
-            <span style="color:white">Libra</span>.com
-          </a>
-          <ul class="nav nav-pills">            <li class="nav-item">              
-            <a class="nav-link {% if view_name  == 'about:author' %}active{% endif %}" 
-              href="author.html">Об авторе</a>
-            </li>
-            <li class="nav-item"> 
-              <a class="nav-link link-light" href="login.html">Войти</a>
-            </li>
-            <li class="nav-item"> 
-              <a class="nav-link link-light" href="signup.html">Регистрация</a>
-            </li>          </ul>
-        </div>
-      </nav>    
-        
-    </header>
     <main> 
       <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div class="container py-5"> 
@@ -81,10 +57,6 @@
     <!-- Использованы классы бустрапа: -->
     <!-- border-top: создаёт тонкую линию сверху блока -->
     <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
-    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
-    <footer class="border-top text-center py-3">
-      <!-- тег span используется для добавления нужных стилей отдельным участкам текста --> 
-      <p>© 2023 Copyright <span style="color:red">Libra</span>.com</p>    
-    </footer>
+    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->           
   </body>
 </html>

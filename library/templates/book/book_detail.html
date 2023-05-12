@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}
+Книга "{{ books.title }}"
+{% endblock %}
+{% block content %}       
+      <div class="row">
+        <aside class="col-12 col-md-3">
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Автор: {{ books.author }}
+              </li>
+            <li class="list-group-item">
+                Жанры: {{ books.genres.name }}
+            </li>
+            <li class="list-group-item">
+                {% thumbnail books.image "1000x1000" crop="center" upscale=True as im %}
+            <img class="card-img my-2" src="{{ im.url }}">
+          {% endthumbnail %}
+            </li>
+          </ul>
+        </aside>
+        <article class="col-12 col-md-9">
+          
+          <p>
+           {{ books.description }}
+          </p>
+          
+        </article>
+        {% include 'book/includes/comment.html' %}
+      </div> 
+{% endblock %}

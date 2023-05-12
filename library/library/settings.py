@@ -22,7 +22,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework.authtoken',
-    'users',
+    'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
     'sorl.thumbnail',
 ]
 
@@ -96,7 +97,7 @@ REST_FRAMEWORK = {
 }
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "ru" 
 
 TIME_ZONE = 'UTC'
 

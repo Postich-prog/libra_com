@@ -9,16 +9,40 @@
           <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
           <span style="color:white">Libra</span>.com
         </a>
-        <ul class="nav nav-pills">            <li class="nav-item">              
+
+        {% with request.resolver_match.view_name as view_name %}  
+        <ul class="nav nav-pills">            
+          <li class="nav-item">              
           <a class="nav-link {% if view_name  == 'about:author' %}active{% endif %}" 
             href="{% url 'about:author' %}">Об авторе</a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">              
+            <a class="nav-link {% if view_name  == 'book:favorites' %}active{% endif %}" 
+              href="{% url 'book:favorites' %}">Избранное</a>
+            </li>
+            {% endif %}
+
+          {% if request.user.is_authenticated %}
           <li class="nav-item"> 
-            <a class="nav-link link-light" href="login.html">Войти</a>
+            <a class="nav-link link-light" href="{% url 'users:password_reset' %}">Изменить пароль</a>
           </li>
           <li class="nav-item"> 
-            <a class="nav-link link-light" href="signup.html">Регистрация</a>
-          </li>          </ul>
+            <a class="nav-link link-light" href="{% url 'users:logout' %}">Выйти</a>
+          </li>
+          <li>
+            Пользователь: {{ user.username }}
+          </li>
+          {% else %}
+          <li class="nav-item"> 
+            <a class="nav-link link-light" href="{% url 'users:login' %}">Войти</a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link link-light" href="{% url 'users:signup' %}">Регистрация</a>
+          </li>
+          {% endif %}   
+          {% endwith %}
+        </ul>
       </div>
     </nav>
   </header>
