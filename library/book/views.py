@@ -34,10 +34,12 @@ def post_detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     form = CommentForm()
     comments = book.comments.all()
+    genres = book.genres.all()
     context = {
         'books': book,
         'form': form,
         'comments': comments,
+        'genres': genres,
     }
     return render(request, 'book/book_detail.html', context)
 

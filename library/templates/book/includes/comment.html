@@ -11,9 +11,26 @@
         </div>
         <button id="id_button_save" type="submit" class="btn btn-primary">Отправить</button>
       </form>
-      
-      {% block javascript %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </div>
+  </div>
+{% endif %}
+
+{% for comment in comments %}
+  <div class="media mb-4" >
+    <div class="media-body" >
+      <h5 class="mt-0">
+        <a href="">
+          {{ comment.author.username }}
+        </a>
+      </h5>
+      <p>
+        {{ comment.text }}
+      </p>
+    </div>
+  </div>
+{% endfor %}
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
       $(document).ready(function () {
           // отслеживаем событие отправки формы
@@ -24,8 +41,8 @@
                   type: $(this).attr('method'), // GET или POST
                   url: "{% url 'book:add_comment' books.id %}",
                   // если успешно, то
-                  success:function(){
-                    alert('Комментарий сохранен');
+                  success:function(html){
+                    $("#content").load(location.href + " #content")
                       },
                   // если ошибка, то
                   error: function (response) {
@@ -39,22 +56,3 @@
       })
   </script>
 {% endblock javascript %}
-
-    </div>
-  </div>
-{% endif %}
-
-{% for comment in comments %}
-  <div class="media mb-4">
-    <div class="media-body">
-      <h5 class="mt-0">
-        <a href="">
-          {{ comment.author.username }}
-        </a>
-      </h5>
-      <p>
-        {{ comment.text }}
-      </p>
-    </div>
-  </div>
-{% endfor %}

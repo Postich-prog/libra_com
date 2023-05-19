@@ -113,3 +113,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 POST_COUNT: int = 10
+
+LOGIN_REDIRECT_URL = 'book:favorites'
