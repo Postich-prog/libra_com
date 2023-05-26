@@ -10,12 +10,12 @@ services:
     image: postgres:13.0-alpine
     # volume и связанная с ним директория в контейнере
     volumes:
-      - /var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     # адрес файла, где хранятся переменные окружения
     env_file:
       - ./.env
   web:
-    build: .
+    build: mslut/library
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
@@ -58,5 +58,7 @@ services:
 
 volumes:
   # Новые тома 
+  postgres_data:
+  static_value:
   static_value:
   media_value:
