@@ -15,7 +15,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: mslut/library:latest
+    build: .
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
