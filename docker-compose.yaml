@@ -14,8 +14,8 @@ services:
     # адрес файла, где хранятся переменные окружения
     env_file:
       - ./.env
-  library:
-    build: mslut/library
+  web:
+    build: mslut/library:latest
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
