@@ -60,5 +60,4 @@ volumes:
   # Новые тома 
   postgres_data:
   static_value:
-  static_value:
   media_value:
