@@ -14,7 +14,7 @@ services:
     # адрес файла, где хранятся переменные окружения
     env_file:
       - ./.env
-  web:
+  library:
     build: mslut/library
     restart: always
     volumes:
