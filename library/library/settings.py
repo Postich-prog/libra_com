@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'sorl.thumbnail',
+    'whitenoise.runserver.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -113,11 +114,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+MIDDLEWARE_CLASSES = ['django.middleware.security.SecurityMiddleware','whitenoise.middleware.WhiteNoiseMiddleware']
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    (os.path.join(BASE_DIR, 'library/static'), os.path.join(BASE_DIR, 'static'),)
 ]
 
 MEDIA_URL = '/media/'
