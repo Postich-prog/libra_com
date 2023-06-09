@@ -2,12 +2,12 @@
 <header>
     <!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
     <!-- В дальнейшем тут будет создано полноценное меню -->
-    <nav class="navbar navbar-light" style="background-color: blueviolet">
+    <nav class="navbar navbar-light" style="background-color: #a2d2ff">
       <div class="container">
         <a class="navbar-brand" href="{% url 'book:index' %}">
           <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
           <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
-          <span style="color:white">Libra</span>.com
+          <span style="color:white">Libra.com</span>
         </a>
 
         {% with request.resolver_match.view_name as view_name %}  
